@@ -14,12 +14,14 @@ class FolderViewController: UITableViewController {
     
     var folderArr = [Files.Metadata]()
     var fileArr = [Files.Metadata]()
+    var pathArr = [String]()
 
     func folderView(pathos: String) {
+        pathArr.append(pathos)
         if let dropboxClient = DropboxClientsManager.authorizedClient {
             folderArr.removeAll()
             fileArr.removeAll()
-            let listFolders = dropboxClient.files.listFolder(path: pathos)
+            let listFolders = dropboxClient.files.listFolder(path: pathos, recursive: false)
             listFolders.response{ response, error in
                 guard let result = response else {
                     return
@@ -65,7 +67,7 @@ class FolderViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print ("THE ARRAYS COUNT IS \(folderArr.count+fileArr.count)")
-        return folderArr.count+fileArr.count
+        return folderArr.count+fileArr.count+1
     }
 
     
@@ -75,8 +77,11 @@ class FolderViewController: UITableViewController {
         if indexPath.row < folderArr.count {
             cell.textLabel?.text = folderArr[indexPath.row].name
             cell.detailTextLabel?.text = "Folder"
-        } else {
+        } else if (indexPath.row-folderArr.count) < fileArr.count {
             cell.textLabel?.text = fileArr[indexPath.row - folderArr.count].name
+            cell.detailTextLabel?.text = " "
+        } else {
+            cell.textLabel?.text = "Back"
             cell.detailTextLabel?.text = ""
         }
         
@@ -91,6 +96,13 @@ class FolderViewController: UITableViewController {
             let folder = folderArr[indexPath.row]
             let path = folder.pathLower
             folderView(pathos: path!)
+        } else if cell?.detailTextLabel?.text == "" {
+            if pathArr.count != 1 {
+                print("back is called")
+                print(pathArr)
+                pathArr.popLast()
+                folderView(pathos: pathArr.popLast()!)
+            }
         } else {
             let client = DropboxClientsManager.authorizedClient
             let fileManager = FileManager.default
