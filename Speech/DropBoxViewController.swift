@@ -21,23 +21,22 @@ import PopupDialog
 class DropBoxViewController : UIViewController {
     
     @IBAction func folderView(_ sender: Any) {
-//        if let dropboxClient = DropboxClientsManager.authorizedClient {
-//            let listFolders = dropboxClient.files.listFolder(path: "")
-//            listFolders.response{ response, error in
-//                guard let result = response else {
-//                    return
-//                }
-//                for entry in result.entries {
-//                    if let meta = entry as? Files.FolderMetadata {
-//                        print (entry)
-//                    } else {
-//                        print("2")
-//                    }
-//                }
-//            }
-//        }
+        if DropboxClientsManager.authorizedClient == nil {
+            let popup = PopupDialog(title: "OOPS!", message: "Have you logged in successfully? Try again after logging in.", image: UIImage(named: "error"))
+            popup.addButton(CancelButton(title: "OK", height: 50, dismissOnTap: true, action: nil))
+            self.present(popup, animated: true, completion: nil)
+            errorOccured = true
+            print("2")
+            return
+        }
+
     }
     
+    @IBAction func logout(_ sender: UIButton) {
+        if DropboxClientsManager.authorizedClient != nil {
+            DropboxClientsManager.authorizedClient = nil
+        }
+    }
     //MARK: variables
     var audioData: NSMutableData!
     var modelController = ModelController()
@@ -104,14 +103,14 @@ class DropBoxViewController : UIViewController {
 //            errorOccured = false
 //            print("1")
 //        }
-//        if !hasLogin {
-//            let popup = PopupDialog(title: "OOPS!", message: "Have you logged in successfully? Try again after logging in.", image: UIImage(named: "error"))
-//            popup.addButton(CancelButton(title: "OK", height: 50, dismissOnTap: true, action: nil))
-//            self.present(popup, animated: true, completion: nil)
-//            errorOccured = true
-//            print("2")
-//            return
-//        }
+        if DropboxClientsManager.authorizedClient == nil {
+            let popup = PopupDialog(title: "OOPS!", message: "Have you logged in successfully? Try again after logging in.", image: UIImage(named: "error"))
+            popup.addButton(CancelButton(title: "OK", height: 50, dismissOnTap: true, action: nil))
+            self.present(popup, animated: true, completion: nil)
+            errorOccured = true
+            print("2")
+            return
+        }
 //        if pathVar.prefix(1) != "/" {
 //            print(pathVar.prefix(0))
 //            let popup = PopupDialog(title: "OOPS!", message: "Please preface path with \"/\"", image: UIImage(named: "error"))
