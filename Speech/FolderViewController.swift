@@ -78,6 +78,8 @@ class FolderViewController: UITableViewController {
             cell.textLabel?.text = fileArr[indexPath.row - folderArr.count].name
             cell.detailTextLabel?.text = ""
         }
+        
+        print("LOADING TABLE CELLS")
 
         return cell
     }
@@ -89,8 +91,26 @@ class FolderViewController: UITableViewController {
             let path = folder.pathLower
             folderView(pathos: path!)
         } else {
-            //download the file
-            //pop this view
+            let client = DropboxClientsManager.authorizedClient
+            let fileManager = FileManager.default
+            let directoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let destURL2 = directoryURL.appendingPathComponent("tempDir")//tempDir will be the file name
+            let destination2: (URL, HTTPURLResponse) -> URL = { temporaryURL, response in
+                return destURL2
+            }
+            let file = fileArr[indexPath.row-folderArr.count]
+            let pathVar = file.pathLower
+            client!.files.download(path: pathVar!, overwrite: true, destination: destination2).response {response, error in
+                if let response = response {
+                    print ("response is: \(response)")
+                    self.navigationController?.popViewController(animated: true)
+                } else if let error = error {
+                    //self.errorCardInit(errorParam: "Invalid Path")
+                    print ("OVERALL ERROR IS \(error)")
+                }
+                }
+                .progress {progressData in print(progressData)
+            }
         }
     }
 

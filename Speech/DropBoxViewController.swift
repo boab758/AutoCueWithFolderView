@@ -99,70 +99,55 @@ class DropBoxViewController : UIViewController {
     @IBAction func download(_ sender: UIButton) {
         print(pathVar)
         var matchVC = self.modelController.match
-        if errorOccured {
-            errorCard.removeFromSuperview()
-            errorOccured = false
-            print("1")
-        }
-        if !hasLogin {
-            let popup = PopupDialog(title: "OOPS!", message: "Have you logged in successfully? Try again after logging in.", image: UIImage(named: "error"))
-            popup.addButton(CancelButton(title: "OK", height: 50, dismissOnTap: true, action: nil))
-            self.present(popup, animated: true, completion: nil)
-            errorOccured = true
-            print("2")
-            return
-        }
-        if pathVar.prefix(1) != "/" {
-            print(pathVar.prefix(0))
-            let popup = PopupDialog(title: "OOPS!", message: "Please preface path with \"/\"", image: UIImage(named: "error"))
-            popup.addButton(CancelButton(title: "OK", height: 50, dismissOnTap: true, action: nil))
-            self.present(popup, animated: true, completion: nil)
-            errorOccured = true
-            print("3")
-            return
-        }
-        if pathVar.suffix(4) != ".txt" {
-            let popup = PopupDialog(title: "OOPS!", message: "We only accept txt files at the moment.", image: UIImage(named: "error"))
-            popup.addButton(CancelButton(title: "OK", height: 50, dismissOnTap: true, action: nil))
-            self.present(popup, animated: true, completion: nil)
-            errorOccured = true
-            print("4")
-            return
-        }
+//        if errorOccured {
+//            errorCard.removeFromSuperview()
+//            errorOccured = false
+//            print("1")
+//        }
+//        if !hasLogin {
+//            let popup = PopupDialog(title: "OOPS!", message: "Have you logged in successfully? Try again after logging in.", image: UIImage(named: "error"))
+//            popup.addButton(CancelButton(title: "OK", height: 50, dismissOnTap: true, action: nil))
+//            self.present(popup, animated: true, completion: nil)
+//            errorOccured = true
+//            print("2")
+//            return
+//        }
+//        if pathVar.prefix(1) != "/" {
+//            print(pathVar.prefix(0))
+//            let popup = PopupDialog(title: "OOPS!", message: "Please preface path with \"/\"", image: UIImage(named: "error"))
+//            popup.addButton(CancelButton(title: "OK", height: 50, dismissOnTap: true, action: nil))
+//            self.present(popup, animated: true, completion: nil)
+//            errorOccured = true
+//            print("3")
+//            return
+//        }
+//        if pathVar.suffix(4) != ".txt" {
+//            let popup = PopupDialog(title: "OOPS!", message: "We only accept txt files at the moment.", image: UIImage(named: "error"))
+//            popup.addButton(CancelButton(title: "OK", height: 50, dismissOnTap: true, action: nil))
+//            self.present(popup, animated: true, completion: nil)
+//            errorOccured = true
+//            print("4")
+//            return
+//        }
         print("5")
-        let client = DropboxClientsManager.authorizedClient
         let fileManager = FileManager.default
         let directoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let destURL2 = directoryURL.appendingPathComponent("tempDir")//myTestFile will be the file name
         let destination2: (URL, HTTPURLResponse) -> URL = { temporaryURL, response in
             return destURL2
         }
-        client!.files.download(path: pathVar, overwrite: true, destination: destination2).response {response, error in
-            if let response = response {
-                print ("response is: \(response)")
-                do {
-                    var encoding: String.Encoding = .ascii
-                    matchVC.fakeInit(document: try String(contentsOf: destURL2, usedEncoding: &encoding))
-                    DropBoxViewController.numOfDownloads += 1
-                    print("DOWNLOAD FINISH")
-                    self.shouldSegue = true
-                    self.modelController.color = "blue"
-                    self.performSegue(withIdentifier: "showCueCard", sender: Any?)
-                } catch {
-                    self.errorOccured = true
-                    self.errorCardInit(errorParam: error as! String)
-                    print ("the error in response is \(error)")
-                }
-            } else if let error = error {
-                let popup = PopupDialog(title: "OOPS!", message: "File not found", image: UIImage(named: "error"))
-                popup.addButton(CancelButton(title: "OK", height: 50, dismissOnTap: true, action: nil))
-                self.present(popup, animated: true, completion: nil)
-                self.errorOccured = true
-//                self.errorCardInit(errorParam: "Invalid Path")
-                print ("OVERALL ERROR IS \(error)")
-            }
-            }
-            .progress {progressData in print(progressData)
+        do {
+            var encoding: String.Encoding = .ascii
+            matchVC.fakeInit(document: try String(contentsOf: destURL2, usedEncoding: &encoding))
+            DropBoxViewController.numOfDownloads += 1
+            print("DOWNLOAD FINISH")
+            self.shouldSegue = true
+            self.modelController.color = "blue"
+            self.performSegue(withIdentifier: "showCueCard", sender: Any?)
+        } catch {
+            self.errorOccured = true
+            self.errorCardInit(errorParam: error as! String)
+            print ("the error in response is \(error)")
         }
     }
     
