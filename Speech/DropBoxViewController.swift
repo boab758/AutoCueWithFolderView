@@ -21,21 +21,21 @@ import PopupDialog
 class DropBoxViewController : UIViewController {
     
     @IBAction func folderView(_ sender: Any) {
-        if let dropboxClient = DropboxClientsManager.authorizedClient {
-            let listFolders = dropboxClient.files.listFolder(path: "")
-            listFolders.response{ response, error in
-                guard let result = response else {
-                    return
-                }
-                for entry in result.entries {
-                    if let meta = entry as? Files.FolderMetadata {
-                        print (entry)
-                    } else {
-                        print("2")
-                    }
-                }
-            }
-        }
+//        if let dropboxClient = DropboxClientsManager.authorizedClient {
+//            let listFolders = dropboxClient.files.listFolder(path: "")
+//            listFolders.response{ response, error in
+//                guard let result = response else {
+//                    return
+//                }
+//                for entry in result.entries {
+//                    if let meta = entry as? Files.FolderMetadata {
+//                        print (entry)
+//                    } else {
+//                        print("2")
+//                    }
+//                }
+//            }
+//        }
     }
     
     //MARK: variables

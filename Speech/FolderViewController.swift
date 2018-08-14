@@ -14,9 +14,11 @@ class FolderViewController: UITableViewController {
     var folderArr = [Files.Metadata]()
     var fileArr = [Files.Metadata]()
 
-    func folderView() {
+    func folderView(pathos: String) {
         if let dropboxClient = DropboxClientsManager.authorizedClient {
-            let listFolders = dropboxClient.files.listFolder(path: "")
+            folderArr.removeAll()
+            fileArr.removeAll()
+            let listFolders = dropboxClient.files.listFolder(path: pathos)
             listFolders.response{ response, error in
                 guard let result = response else {
                     return
@@ -30,13 +32,16 @@ class FolderViewController: UITableViewController {
                         print("2")
                     }
                 }
+                print("QWERT")
+                self.tableView.reloadData()
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        folderView()
+        print("TIMEM")
+        folderView(pathos: "")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -54,23 +59,40 @@ class FolderViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        print ("THE ARRAYS COUNT IS \(folderArr.count+fileArr.count)")
+        return folderArr.count+fileArr.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DocumentCell", for: indexPath)
-
-        cell.textLabel?.text = ""
+        
+        if indexPath.row < folderArr.count {
+            cell.textLabel?.text = folderArr[indexPath.row].name
+            cell.detailTextLabel?.text = "Folder"
+        } else {
+            cell.textLabel?.text = fileArr[indexPath.row - folderArr.count].name
+            cell.detailTextLabel?.text = ""
+        }
 
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell?.detailTextLabel?.text == "Folder" {
+            let folder = folderArr[indexPath.row]
+            let path = folder.pathLower
+            folderView(pathos: path!)
+        } else {
+            //download the file
+            //pop this view
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
