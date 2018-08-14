@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyDropbox
+import PopupDialog
 
 class FolderViewController: UITableViewController {
     
@@ -100,6 +101,13 @@ class FolderViewController: UITableViewController {
             }
             let file = fileArr[indexPath.row-folderArr.count]
             let pathVar = file.pathLower
+            let fileName = file.name
+            if fileName.suffix(4) != ".txt" {
+                let popup = PopupDialog(title: "OOPS!", message: "We only accept txt files at the moment.", image: UIImage(named: "error"))
+                popup.addButton(CancelButton(title: "OK", height: 50, dismissOnTap: true, action: nil))
+                self.present(popup, animated: true, completion: nil)
+                return
+            }
             client!.files.download(path: pathVar!, overwrite: true, destination: destination2).response {response, error in
                 if let response = response {
                     print ("response is: \(response)")
