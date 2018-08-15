@@ -78,12 +78,15 @@ class FolderViewController: UITableViewController {
         if indexPath.row < folderArr.count {
             cell.textLabel?.text = folderArr[indexPath.row].name
             cell.detailTextLabel?.text = "Folder"
+            cell.imageView!.image = UIImage(named: "folder")
         } else if (indexPath.row-folderArr.count) < fileArr.count {
             cell.textLabel?.text = fileArr[indexPath.row - folderArr.count].name
             cell.detailTextLabel?.text = " "
+            cell.imageView!.image = UIImage(named: "file")
         } else {
             cell.textLabel?.text = "Back"
             cell.detailTextLabel?.text = ""
+            cell.imageView!.image = UIImage(named: "back")
         }
         
         print("LOADING TABLE CELLS")
