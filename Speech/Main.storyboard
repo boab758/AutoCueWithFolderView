@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbk-NV-VhK">
-                                <rect key="frame" x="123.5" y="183" width="128" height="48"/>
+                                <rect key="frame" x="124" y="183" width="128" height="48"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="128" id="fdI-Of-9fo"/>
@@ -42,7 +42,8 @@
                                 <rect key="frame" x="98" y="458" width="179" height="64"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="OM8-Tg-dEK"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="64" id="OM8-Tg-dEK"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="179" id="ank-5l-FbH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Download">
@@ -53,10 +54,46 @@
                                     <segue destination="eCD-Kw-uvd" kind="show" identifier="showCueCard" id="gtA-bz-pA3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wex-Eh-Hds">
-                                <rect key="frame" x="249" y="307" width="110" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZE-jp-pTX">
+                                <rect key="frame" x="267" y="593" width="92" height="54"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="92" id="1EF-42-dAS"/>
+                                </constraints>
+                                <state key="normal" title="LOGOUT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yvt-j9-i1m"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NX0-Zl-sel">
+                                <rect key="frame" x="16" y="322" width="225" height="31"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="FJ9-I6-uPC"/>
+                                    <constraint firstAttribute="width" constant="225" id="nzb-h7-mI3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90v-pW-HSr">
+                                <rect key="frame" x="267" y="593" width="92" height="54"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="LOGOUT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="emn-3n-f87"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wex-Eh-Hds">
+                                <rect key="frame" x="249" y="313" width="110" height="48"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="nqq-Zy-E52"/>
+                                    <constraint firstAttribute="width" constant="110" id="sbb-Cx-qK3"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Browse">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -66,46 +103,31 @@
                                     <segue destination="7Om-4H-h07" kind="show" identifier="folderViewSegue" id="Wxl-hQ-Of5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZE-jp-pTX">
-                                <rect key="frame" x="267" y="593" width="92" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="LOGOUT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yvt-j9-i1m"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NX0-Zl-sel">
-                                <rect key="frame" x="28" y="316" width="213" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90v-pW-HSr">
-                                <rect key="frame" x="267" y="593" width="92" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="LOGOUT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="emn-3n-f87"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.14579306569528139" green="0.46559233426754171" blue="0.74928616751269028" alpha="0.82373715753424659" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wex-Eh-Hds" firstAttribute="top" secondItem="nbk-NV-VhK" secondAttribute="bottom" constant="82" id="1QR-TJ-5c9"/>
+                            <constraint firstItem="wex-Eh-Hds" firstAttribute="trailing" secondItem="90v-pW-HSr" secondAttribute="trailing" id="3ke-VE-XQT"/>
+                            <constraint firstItem="3Cd-lk-6rs" firstAttribute="top" secondItem="wex-Eh-Hds" secondAttribute="bottom" constant="97" id="5X2-9e-WjG"/>
                             <constraint firstItem="3Cd-lk-6rs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Nf-ZH-hLi"/>
+                            <constraint firstItem="wex-Eh-Hds" firstAttribute="leading" secondItem="NX0-Zl-sel" secondAttribute="trailing" constant="8" id="9Ea-6K-WrD"/>
                             <constraint firstAttribute="trailing" secondItem="nbk-NV-VhK" secondAttribute="trailing" constant="123.5" id="Czd-Qq-quV"/>
                             <constraint firstItem="3Cd-lk-6rs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="82" id="HW4-4J-VrX"/>
+                            <constraint firstItem="VZE-jp-pTX" firstAttribute="baseline" secondItem="90v-pW-HSr" secondAttribute="firstBaseline" id="HeL-lb-xUE"/>
+                            <constraint firstAttribute="trailing" secondItem="wex-Eh-Hds" secondAttribute="trailing" constant="16" id="I8s-jT-H3X"/>
+                            <constraint firstItem="wex-Eh-Hds" firstAttribute="trailing" secondItem="VZE-jp-pTX" secondAttribute="trailing" id="MiS-Ce-pZC"/>
+                            <constraint firstItem="NX0-Zl-sel" firstAttribute="centerY" secondItem="wex-Eh-Hds" secondAttribute="centerY" id="PF4-3Z-o8F"/>
                             <constraint firstItem="nbk-NV-VhK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ph0-VX-GPD"/>
                             <constraint firstItem="nbk-NV-VhK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="123.5" id="UhJ-Om-vvK"/>
+                            <constraint firstItem="wex-Eh-Hds" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="249" id="Yke-PZ-fCu"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3Cd-lk-6rs" secondAttribute="bottom" constant="145" id="aqj-JP-YK3"/>
+                            <constraint firstItem="VZE-jp-pTX" firstAttribute="leading" secondItem="90v-pW-HSr" secondAttribute="leading" id="cX6-sO-H57"/>
                             <constraint firstItem="nbk-NV-VhK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="119" id="ekw-sX-xeJ"/>
+                            <constraint firstItem="VZE-jp-pTX" firstAttribute="top" secondItem="3Cd-lk-6rs" secondAttribute="bottom" constant="71" id="ezT-A1-Uxa"/>
+                            <constraint firstItem="NX0-Zl-sel" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fEP-eZ-ZKT"/>
+                            <constraint firstAttribute="bottom" secondItem="VZE-jp-pTX" secondAttribute="bottom" constant="20" symbolic="YES" id="fQb-Ca-dMW"/>
                             <constraint firstAttribute="trailing" secondItem="3Cd-lk-6rs" secondAttribute="trailing" constant="98" id="pWe-dd-kh3"/>
+                            <constraint firstItem="VZE-jp-pTX" firstAttribute="top" secondItem="90v-pW-HSr" secondAttribute="top" id="tXh-y5-2mj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OSl-ZV-S67"/>
