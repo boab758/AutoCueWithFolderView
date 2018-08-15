@@ -15,6 +15,7 @@ class FolderViewController: UITableViewController {
     var folderArr = [Files.Metadata]()
     var fileArr = [Files.Metadata]()
     var pathArr = [String]()
+    var modelController: ModelController!
 
     func folderView(pathos: String) {
         pathArr.append(pathos)
@@ -123,6 +124,7 @@ class FolderViewController: UITableViewController {
             client!.files.download(path: pathVar!, overwrite: true, destination: destination2).response {response, error in
                 if let response = response {
                     print ("response is: \(response)")
+                    self.modelController.title = " " + pathVar!
                     self.navigationController?.popViewController(animated: true)
                 } else if let error = error {
                     //self.errorCardInit(errorParam: "Invalid Path")

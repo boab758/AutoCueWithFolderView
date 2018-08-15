@@ -38,18 +38,6 @@
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BVO-TF-LLl"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. /anyfilename.txt" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tbS-Yf-0Y9">
-                                <rect key="frame" x="89" y="319" width="197" height="30"/>
-                                <color key="textColor" white="0.0" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="editChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="PkY-M3-XHB"/>
-                                </connections>
-                            </textField>
                             <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Cd-lk-6rs">
                                 <rect key="frame" x="98" y="458" width="179" height="64"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -66,16 +54,20 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wex-Eh-Hds">
-                                <rect key="frame" x="16" y="85" width="74" height="62"/>
+                                <rect key="frame" x="249" y="307" width="110" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Browse">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="folderView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8au-Xa-iB2"/>
-                                    <segue destination="7Om-4H-h07" kind="show" id="Wxl-hQ-Of5"/>
+                                    <segue destination="7Om-4H-h07" kind="show" identifier="folderViewSegue" id="Wxl-hQ-Of5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZE-jp-pTX">
-                                <rect key="frame" x="267" y="89" width="92" height="54"/>
+                                <rect key="frame" x="267" y="593" width="92" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="LOGOUT">
@@ -85,26 +77,41 @@
                                     <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yvt-j9-i1m"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NX0-Zl-sel">
+                                <rect key="frame" x="28" y="316" width="213" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90v-pW-HSr">
+                                <rect key="frame" x="267" y="593" width="92" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="LOGOUT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="emn-3n-f87"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.14579306569528139" green="0.46559233426754171" blue="0.74928616751269028" alpha="0.82373715753424659" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3Cd-lk-6rs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Nf-ZH-hLi"/>
-                            <constraint firstItem="tbS-Yf-0Y9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nbk-NV-VhK" secondAttribute="bottom" constant="54" id="94L-qA-2XQ"/>
                             <constraint firstAttribute="trailing" secondItem="nbk-NV-VhK" secondAttribute="trailing" constant="123.5" id="Czd-Qq-quV"/>
-                            <constraint firstItem="3Cd-lk-6rs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tbS-Yf-0Y9" secondAttribute="bottom" constant="109" id="FbH-zi-cjm"/>
                             <constraint firstItem="3Cd-lk-6rs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="82" id="HW4-4J-VrX"/>
-                            <constraint firstItem="tbS-Yf-0Y9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="PJt-St-cT9"/>
                             <constraint firstItem="nbk-NV-VhK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ph0-VX-GPD"/>
                             <constraint firstItem="nbk-NV-VhK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="123.5" id="UhJ-Om-vvK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3Cd-lk-6rs" secondAttribute="bottom" constant="145" id="aqj-JP-YK3"/>
-                            <constraint firstItem="tbS-Yf-0Y9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cv8-KU-uHc"/>
                             <constraint firstItem="nbk-NV-VhK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="119" id="ekw-sX-xeJ"/>
                             <constraint firstAttribute="trailing" secondItem="3Cd-lk-6rs" secondAttribute="trailing" constant="98" id="pWe-dd-kh3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OSl-ZV-S67"/>
                     <connections>
-                        <outlet property="pathField" destination="tbS-Yf-0Y9" id="n65-vQ-6i4"/>
+                        <outlet property="folderViewOutlet" destination="wex-Eh-Hds" id="I9l-A9-iqL"/>
+                        <outlet property="titleLabel" destination="NX0-Zl-sel" id="Zwt-48-y4s"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="I19-bM-Qp4"/>
                         <outletCollection property="buttons" destination="nbk-NV-VhK" collectionClass="NSMutableArray" id="K15-hk-nHA"/>
                         <outletCollection property="buttons" destination="3Cd-lk-6rs" collectionClass="NSMutableArray" id="VGV-fd-15M"/>

@@ -31,10 +31,19 @@ class DropBoxViewController : UIViewController {
         }
 
     }
+    @IBOutlet weak var folderViewOutlet: UIButton! {
+        didSet {
+            folderViewOutlet.layer.cornerRadius = 16.0
+        }
+    }
     
     @IBAction func logout(_ sender: UIButton) {
         if DropboxClientsManager.authorizedClient != nil {
             DropboxClientsManager.authorizedClient = nil
+        } else {
+            let popup = PopupDialog(title: "OOPS!", message: "You are already logged out.", image: UIImage(named: "error"))
+            popup.addButton(CancelButton(title: "OK", height: 50, dismissOnTap: true, action: nil))
+            self.present(popup, animated: true, completion: nil)
         }
     }
     //MARK: variables
@@ -55,6 +64,11 @@ class DropBoxViewController : UIViewController {
                 //print(modelController.match.sentences[0])
                 cueCardViewController.modelController = modelController
             }
+        } else if segue.identifier == "folderViewSegue" {
+            if let FolderViewController = segue.destination as? FolderViewController {
+                //print(modelController.match.sentences[0])
+                FolderViewController.modelController = modelController
+            }
         }
     }
     override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
@@ -64,6 +78,19 @@ class DropBoxViewController : UIViewController {
             return false
         }
         return true
+    }
+    
+    //MARK: title path
+    override func viewWillAppear(_ animated: Bool) {
+        let title = modelController.title
+        titleLabel.text = title
+    }
+    
+    @IBOutlet weak var titleLabel: UILabel! {
+        didSet {
+            titleLabel.layer.masksToBounds = true
+            titleLabel.layer.cornerRadius = 5.0
+        }
     }
     
     @IBOutlet weak var pathField: UITextField! {

@@ -12,5 +12,6 @@ class ModelController {
     
     var match = Match()
     var color = ""
+    var title = ""
     
 }
