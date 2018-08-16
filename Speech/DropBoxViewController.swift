@@ -83,18 +83,19 @@ class DropBoxViewController : UIViewController {
         return true
     }
         
-    //MARK: title path
+    //MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         let title = modelController.title
         titleLabel.text = title
         loginLogout()
     }
-    
+    //MARK: loginLogout
     func loginLogout() {
         if DropboxClientsManager.authorizedClient != nil { //logged in
             self.loginButton.isHidden = true
             self.logoutButton.isHidden = false
             self.welcomeLabel.isHidden = false
+            print("STATUS WEL : \(self.welcomeLabel.isHidden)")
             DropboxClientsManager.authorizedClient?.users.getCurrentAccount().response {response, error in
                 if let reponse = response {
                     if let name = response?.name.displayName {
