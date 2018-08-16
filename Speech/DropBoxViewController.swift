@@ -40,6 +40,9 @@ class DropBoxViewController : UIViewController {
     @IBAction func logout(_ sender: UIButton) {
         if DropboxClientsManager.authorizedClient != nil {
             DropboxClientsManager.authorizedClient = nil
+            print ("CALLED THE LOGOUT IBACTION")
+            print("logged out")
+            loginLogout()
         } else {
             let popup = PopupDialog(title: "OOPS!", message: "You are already logged out.", image: UIImage(named: "error"))
             popup.addButton(CancelButton(title: "OK", height: 50, dismissOnTap: true, action: nil))
@@ -79,12 +82,48 @@ class DropBoxViewController : UIViewController {
         }
         return true
     }
-    
+        
     //MARK: title path
     override func viewWillAppear(_ animated: Bool) {
         let title = modelController.title
         titleLabel.text = title
+        loginLogout()
     }
+    
+    func loginLogout() {
+        if DropboxClientsManager.authorizedClient != nil { //logged in
+            self.loginButton.isHidden = true
+            self.logoutButton.isHidden = false
+            self.welcomeLabel.isHidden = false
+            DropboxClientsManager.authorizedClient?.users.getCurrentAccount().response {response, error in
+                if let reponse = response {
+                    if let name = response?.name.displayName {
+                        print (name)
+                        print("WELCOME FUNC IS CALLED")
+                        DispatchQueue.main.async {
+                            self.welcomeLabel.text = "Welcome, \(name)"
+                        }
+                    }
+                } else if let error = error {
+                    print (error)
+                }
+            }
+            
+        } else {
+            print("ELSE FUNC IS CALLED")
+            print("STATUS 1 : \(self.logoutButton.isHidden)")
+            self.loginButton.isHidden = false
+            self.logoutButton.isHidden = true
+            self.welcomeLabel.isHidden = true
+            print("STATUS 2 : \(self.logoutButton.isHidden)")
+        }
+    }
+
+    
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
+    var book: Bool?
+    @IBOutlet weak var welcomeLabel: UILabel!
     
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {

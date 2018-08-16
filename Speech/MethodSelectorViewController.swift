@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import SwiftyDropbox
 
 class MethodSelectorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "combinedcolors")!)
+        //DropboxClientsManager.authorizedClient = nil
         // Do any additional setup after loading the view.
     }
 

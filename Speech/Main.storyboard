@@ -103,6 +103,13 @@
                                     <segue destination="7Om-4H-h07" kind="show" identifier="folderViewSegue" id="Wxl-hQ-Of5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNd-zj-epg">
+                                <rect key="frame" x="30" y="84" width="302" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.14579306569528139" green="0.46559233426754171" blue="0.74928616751269028" alpha="0.82373715753424659" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -133,8 +140,11 @@
                     <navigationItem key="navigationItem" id="OSl-ZV-S67"/>
                     <connections>
                         <outlet property="folderViewOutlet" destination="wex-Eh-Hds" id="I9l-A9-iqL"/>
+                        <outlet property="loginButton" destination="nbk-NV-VhK" id="Syd-NV-CtU"/>
+                        <outlet property="logoutButton" destination="90v-pW-HSr" id="XOP-W7-7Jd"/>
                         <outlet property="titleLabel" destination="NX0-Zl-sel" id="Zwt-48-y4s"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="I19-bM-Qp4"/>
+                        <outlet property="welcomeLabel" destination="FNd-zj-epg" id="1eu-T3-Hro"/>
                         <outletCollection property="buttons" destination="nbk-NV-VhK" collectionClass="NSMutableArray" id="K15-hk-nHA"/>
                         <outletCollection property="buttons" destination="3Cd-lk-6rs" collectionClass="NSMutableArray" id="VGV-fd-15M"/>
                     </connections>
@@ -152,7 +162,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DocumentCell" textLabel="nWv-Is-9UX" detailTextLabel="Dbe-zL-zI4" style="IBUITableViewCellStyleSubtitle" id="g4n-7L-D2F">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DocumentCell" textLabel="nWv-Is-9UX" detailTextLabel="Zpv-Ur-Jql" style="IBUITableViewCellStyleSubtitle" id="g4n-7L-D2F">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g4n-7L-D2F" id="P37-Nz-EzI">
@@ -166,7 +176,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dbe-zL-zI4">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zpv-Ur-Jql">
                                             <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>

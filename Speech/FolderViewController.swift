@@ -37,7 +37,9 @@ class FolderViewController: UITableViewController {
                     }
                 }
                 print("QWERT")
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
